@@ -2,14 +2,19 @@ import os
 import sys
 from game_engine import GameEngine
 
+from dotenv import load_dotenv
+
 def main():
+    # Load environment variables from .env file
+    load_dotenv()
+    
     print("欢迎来到 Project Lang: Gemini 狼人杀")
     
-    # API Key provided by user
-    api_key = os.environ.get("GEMINI_API_KEY") or "AIzaSyAK9EkYlwI_JC2rwg4QSfPL-BEHp9Kcq7I"
+    # API Key from environment variable
+    api_key = os.environ.get("GEMINI_API_KEY")
     
     if not api_key:
-        print("错误: 未找到 GEMINI_API_KEY 环境变量。")
+        print("错误: 未在 .env 文件或环境变量中查找到 GEMINI_API_KEY。")
         return
 
     # Initialize and run
